@@ -11,7 +11,7 @@ namespace ConsoleApp1
             this.request = request;
         }
 
-        public override dynamic GetPrice()
+        public override PriceEngineResult GetPrice()
         {
             //makes a call to an external service - SNIP
             //var response = _someExternalService.PostHttpRequest(requestData);
@@ -25,7 +25,7 @@ namespace ConsoleApp1
             return PricePostProcessor(response);
         }
 
-        public override dynamic PricePostProcessor(dynamic system1Response)
+        public override PriceEngineResult PricePostProcessor(dynamic system1Response)
         {
             if (system1Response.IsSuccess)
             {

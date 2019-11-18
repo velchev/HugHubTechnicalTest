@@ -18,7 +18,7 @@ namespace ConsoleApp1
 
            return null;//TODO
        }
-        public abstract dynamic GetPrice();
-        public abstract dynamic PricePostProcessor(dynamic price);
+        public abstract PriceEngineResult GetPrice();
+        public abstract PriceEngineResult PricePostProcessor(dynamic price);
    }
 }

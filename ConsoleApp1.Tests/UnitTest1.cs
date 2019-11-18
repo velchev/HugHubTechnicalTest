@@ -28,7 +28,7 @@ namespace ConsoleApp1.Tests
             string insurer = "";
             string error = "";
             var mock = new Moq.Mock<QuotationSystem>();
-            mock.Setup(x => x.GetPrice()).Returns("somethig");
+            mock.Setup(x => x.GetPrice()).Returns(new PriceEngineResult());
             mock.Verify(x=>x.GetPrice(), Times.Never);
         }
 
@@ -51,7 +51,7 @@ namespace ConsoleApp1.Tests
             string insurer = "";
             string error = "";
             var mock = new Moq.Mock<QuotationSystem>();
-            mock.Setup(x => x.GetPrice()).Returns("somethig");
+            mock.Setup(x => x.GetPrice()).Returns(new PriceEngineResult());
             mock.Verify(x => x.GetPrice(), Times.Once);
 
         }
