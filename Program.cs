@@ -10,18 +10,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //SNIP - collect input (risk data from the user)
-
+            IRiskDataConsoleInputReader dataReader = new RiskDataConsoleInputReaderStub();
             var request = new PriceRequest()
             {
-                RiskData = new RiskData() //hardcoded here, but would normally be from user input above
-                {
-                    DOB = DateTime.Parse("1980-01-01"),
-                    FirstName = "John",
-                    LastName = "Smith",
-                    Make = "Cool New Phone",
-                    Value = 500
-                }
+                RiskData = dataReader.Read()
             };
 
             decimal tax = 0;

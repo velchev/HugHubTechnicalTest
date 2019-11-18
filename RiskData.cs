@@ -9,5 +9,18 @@ namespace ConsoleApp1
         public decimal Value { get; set; }
         public string Make { get; set; }
         public DateTime? DOB { get; set; }
+
+        public static RiskData Create(string firstName, string lastName, decimal value, string make, DateTime? dob)
+        {
+            return new RiskData
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Value = value,
+                Make = make,
+                DOB = dob
+
+            };
+        }
     }
 }

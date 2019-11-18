@@ -54,6 +54,7 @@
     <Compile Include="QuotationSystem2.cs" />
     <Compile Include="QuotationSystem3.cs" />
     <Compile Include="RiskData.cs" />
+    <Compile Include="RiskDataConsoleInputReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
