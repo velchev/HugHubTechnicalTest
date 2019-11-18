@@ -28,7 +28,7 @@ namespace ConsoleApp1.Tests
             string error = "";
 
             var priceEngine = new PriceEngine();
-            var price = priceEngine.GetPrice(request, out tax, out insurer, out error);
+            var price = priceEngine.GetPrice(request, out tax, out insurer);
 
             Assert.That(price, Is.EqualTo(92.67));
             Assert.That(insurer, Is.EqualTo("zxcvbnm"));

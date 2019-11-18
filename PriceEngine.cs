@@ -10,38 +10,13 @@ namespace ConsoleApp1
     public class PriceEngine
     {
         //pass request with risk data with details of a gadget, return the best price retrieved from 3 external quotation engines
-        public decimal GetPrice(PriceRequest request, out decimal tax, out string insurerName, out string errorMessage)
+        public decimal GetPrice(PriceRequest request, out decimal tax, out string insurerName)
         {
             //initialise return variables
             tax = 0;
             insurerName = "";
-            errorMessage = "";
 
-            //validation
-            if (request.RiskData == null)
-            {
-                errorMessage = "Risk Data is missing";
-                return -1;
-            }
-
-            if (String.IsNullOrEmpty(request.RiskData.FirstName))
-            {
-                errorMessage = "First name is required";
-                return -1;
-            }
-
-            if (String.IsNullOrEmpty(request.RiskData.LastName))
-            {
-                errorMessage = "Surname is required";
-                return -1;
-            }
-
-            if (request.RiskData.Value == 0)
-            {
-                errorMessage = "Value is required";
-
-                return -1;
-            }
+         
 
 
             //now call 3 external system and get the best price

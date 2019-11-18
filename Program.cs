@@ -26,18 +26,17 @@ namespace ConsoleApp1
 
             decimal tax = 0;
             string insurer = "";
-            string error = "";
 
             var priceEngine = new PriceEngine();
-            var price = priceEngine.GetPrice(request, out tax, out insurer, out error);
-
-            if (price == -1)
+            var priceRequestValidationResult = PriceEngineRequestValidator.IsValid(request);
+            if (priceRequestValidationResult.Item1)
             {
-                Console.WriteLine(String.Format("There was an error - {0}", error));
+                var price = priceEngine.GetPrice(request, out tax, out insurer);
+                Console.WriteLine(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price, insurer, tax));
             }
             else
             {
-                Console.WriteLine(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price, insurer, tax));
+                Console.WriteLine(String.Format("There was an error - {0}", priceRequestValidationResult.Item2));
             }
 
             Console.WriteLine("Press any key to exit");
