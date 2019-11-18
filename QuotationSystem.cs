@@ -8,6 +8,17 @@ namespace ConsoleApp1
 {
    public abstract class QuotationSystem
    {
-        public abstract dynamic GetPrice(dynamic request);
+       public virtual bool IsValid => true;
+       public dynamic CalculatePrice()
+       {
+           if (IsValid)
+           {
+               return this.GetPrice();
+           }
+
+           return null;//TODO
+       }
+        public abstract dynamic GetPrice();
+        public abstract dynamic PricePostProcessor(dynamic price);
    }
 }

@@ -2,14 +2,16 @@
 
 namespace ConsoleApp1
 {
-    public class QuotationSystem1: QuotationSystem
+    public class QuotationSystem1 : QuotationSystem
     {
-        public QuotationSystem1(string url, string port)
+        private readonly dynamic request;
+
+        public QuotationSystem1(string url, string port, dynamic request)
         {
-            
+            this.request = request;
         }
 
-        public override dynamic GetPrice(dynamic request)
+        public override dynamic GetPrice()
         {
             //makes a call to an external service - SNIP
             //var response = _someExternalService.PostHttpRequest(requestData);
@@ -20,7 +22,25 @@ namespace ConsoleApp1
             response.Name = "Test Name";
             response.Tax = 123.45M * 0.12M;
 
-            return response;
+            return PricePostProcessor(response);
         }
+
+        public override dynamic PricePostProcessor(dynamic system1Response)
+        {
+            if (system1Response.IsSuccess)
+            {
+                return new PriceEngineResult()
+                {
+                    Price = system1Response.Price,
+                    InsurerName = system1Response.Name,
+                    Tax = system1Response.Tax
+
+                };
+            }
+
+            return null;
+        }
+
+        public override bool IsValid => (request.RiskData.DOB != null);
     }
 }
