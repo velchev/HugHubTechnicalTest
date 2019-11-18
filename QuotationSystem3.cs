@@ -9,7 +9,7 @@ namespace ConsoleApp1
 
         }
 
-        public dynamic GetPrice(dynamic request)
+        public override dynamic GetPrice(dynamic request)
         {
             //makes a call to an external service - SNIP
             //var response = _someExternalService.PostHttpRequest(requestData);
@@ -21,11 +21,6 @@ namespace ConsoleApp1
             response.Tax = 92.67M * 0.12M;
 
             return response;
-        }
-
-        public override dynamic GetPrice()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

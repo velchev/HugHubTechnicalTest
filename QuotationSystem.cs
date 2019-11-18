@@ -8,6 +8,6 @@ namespace ConsoleApp1
 {
    public abstract class QuotationSystem
    {
-        public abstract dynamic GetPrice();
+        public abstract dynamic GetPrice(dynamic request);
    }
 }

@@ -72,15 +72,15 @@ namespace ConsoleApp1
             if (request.RiskData.Make == "examplemake1" || request.RiskData.Make == "examplemake2" ||
                 request.RiskData.Make == "examplemake3")
             {
+                QuotationSystem2 system2 = new QuotationSystem2("http://quote-system-2.com", "1235");
+
                 dynamic systemRequest2 = new ExpandoObject();
                 systemRequest2.FirstName = request.RiskData.FirstName;
                 systemRequest2.LastName = request.RiskData.LastName;
                 systemRequest2.Make = request.RiskData.Make;
                 systemRequest2.Value = request.RiskData.Value;
 
-                QuotationSystem2 system2 = new QuotationSystem2("http://quote-system-2.com", "1235", systemRequest2);
-
-                dynamic system2Response = system2.GetPrice();
+                dynamic system2Response = system2.GetPrice(systemRequest2);
                 if (system2Response.HasPrice && system2Response.Price < price)
                 {
                     price = system2Response.Price;
