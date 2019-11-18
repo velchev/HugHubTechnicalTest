@@ -2,7 +2,7 @@
 
 namespace ConsoleApp1
 {
-    public class QuotationSystem1
+    public class QuotationSystem1: QuotationSystem
     {
         public QuotationSystem1(string url, string port)
         {
@@ -21,6 +21,11 @@ namespace ConsoleApp1
             response.Tax = 123.45M * 0.12M;
 
             return response;
+        }
+
+        public override dynamic GetPrice()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
