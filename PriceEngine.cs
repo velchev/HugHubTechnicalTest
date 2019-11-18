@@ -10,7 +10,7 @@ namespace ConsoleApp1
     public class PriceEngine
     {
         //pass request with risk data with details of a gadget, return the best price retrieved from 3 external quotation engines
-        public decimal GetPrice(PriceRequest request, out decimal tax, out string insurerName)
+        public PriceEngineResult GetPrice(PriceRequest request, out decimal tax, out string insurerName)
         {
             //initialise return variables
             tax = 0;
@@ -87,7 +87,7 @@ namespace ConsoleApp1
                 price = -1;
             }
 
-            return price;
+            return new PriceEngineResult {Price = price};
         }
     }
 }

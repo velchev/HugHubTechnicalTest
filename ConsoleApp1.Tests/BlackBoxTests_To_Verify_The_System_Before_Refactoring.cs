@@ -30,10 +30,10 @@ namespace ConsoleApp1.Tests
             var priceEngine = new PriceEngine();
             var price = priceEngine.GetPrice(request, out tax, out insurer);
 
-            Assert.That(price, Is.EqualTo(92.67));
+            Assert.That(price.Price, Is.EqualTo(92.67));
             Assert.That(insurer, Is.EqualTo("zxcvbnm"));
             Assert.That(tax, Is.EqualTo(11.1204m));
-            Assert.That(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price, insurer, tax),
+            Assert.That(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price.Price, insurer, tax),
                 Is.EqualTo("You price is 92.67, from insurer: zxcvbnm. This includes tax of 11.1204"));
         }
     }

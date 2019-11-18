@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="PriceEngine.cs" />
     <Compile Include="PriceEngineRequestValidator.cs" />
+    <Compile Include="PriceEngineResult.cs" />
     <Compile Include="PriceRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

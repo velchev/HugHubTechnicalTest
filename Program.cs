@@ -32,7 +32,7 @@ namespace ConsoleApp1
             if (priceRequestValidationResult.Item1)
             {
                 var price = priceEngine.GetPrice(request, out tax, out insurer);
-                Console.WriteLine(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price, insurer, tax));
+                Console.WriteLine(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price.Price, insurer, tax));
             }
             else
             {
