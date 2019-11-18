@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public interface IRiskDataConsoleInputReader
-    {
-        RiskData Read();
-    }
     public class RiskDataConsoleInputReader : IRiskDataConsoleInputReader
     {
         public RiskData Read()
@@ -32,13 +24,4 @@ namespace ConsoleApp1
             return RiskData.Create(firstName, lastName, value, make, dob);
         }
     }
-
-    public class RiskDataConsoleInputReaderStub : IRiskDataConsoleInputReader
-    {
-        public RiskData Read()
-        {
-            return RiskData.Create("John", "Smith", 500, "Cool New Phone", DateTime.Parse("1980-01-01"));
-        }
-    }
-
 }

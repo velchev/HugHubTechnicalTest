@@ -68,8 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackBoxTests_To_Verify_The_System_Before_Refactoring.cs" />
+    <Compile Include="PriceEngineRequestValidator_Tests.cs" />
+    <Compile Include="PriceEngine_Using_QuotationSystem2.cs" />
+    <Compile Include="PriceEngine_Using_QuotationSystem1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="QuotationSystem1_Tests.cs" />
+    <Compile Include="QuotationSystem2Service_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

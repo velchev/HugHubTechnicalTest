@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleApp1.PriceEngine;
+using ConsoleApp1.QuotationSystems;
 
 namespace ConsoleApp1
 {
@@ -15,20 +14,32 @@ namespace ConsoleApp1
             {
                 RiskData = dataReader.Read()
             };
+            var systemList = new List<QuotationSystem>();
+            QuotationSystem system1 = new QuotationSystem1("http://quote-system-1.com", "1234", request);
+            QuotationSystem system2 = new QuotationSystem2("http://quote-system-2.com", "1235", request, new QuotationSystem2Service());
+            QuotationSystem system3 = new QuotationSystem3("http://quote-system-3.com", "100", request);
+            QuotationSystem system4 = new QuotationSystem4();//("http://quote-system-3.com", "100", request);
 
-            decimal tax = 0;
-            string insurer = "";
+            systemList.Add(system1);
+            systemList.Add(system2);
+            systemList.Add(system3);
 
-            var priceEngine = new PriceEngine();
-            var priceRequestValidationResult = PriceEngineRequestValidator.IsValid(request);
-            if (priceRequestValidationResult.Item1)
+            var priceEngine = new PriceEngine.PriceEngine(systemList);
+
+            var validator = new PriceEngineRequestValidator();
+            var priceRequestValidationResult = validator.GetValidationErrors(request);
+            if (!priceRequestValidationResult.HasValue)
             {
-                var price = priceEngine.GetPrice(request, out tax, out insurer);
-                Console.WriteLine(String.Format("You price is {0}, from insurer: {1}. This includes tax of {2}", price.Price, price.InsurerName, price.Tax));
+                var price = priceEngine.GetPrice(request);
+                if (price.HasValue)
+                {
+                    Console.WriteLine(
+                        $"You price is {price.Value.Price}, from insurer: {price.Value.InsurerName}. This includes tax of {price.Value.Tax}");
+                }
             }
             else
             {
-                Console.WriteLine(String.Format("There was an error - {0}", priceRequestValidationResult.Item2));
+                Console.WriteLine($"There was an error - {priceRequestValidationResult.Value}");
             }
 
             Console.WriteLine("Press any key to exit");

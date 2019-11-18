@@ -2,6 +2,6 @@
 {
     public class PriceRequest
     {
-        public RiskData RiskData;
+        public RiskData RiskData { get; set; }
     }
 }
