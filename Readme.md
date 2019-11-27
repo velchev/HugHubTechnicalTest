@@ -1,3 +1,18 @@
+# Instructions:
+
+- The attached solution has a class called PriceEngine. Its job is to take input from the user, retrieve price quotes based on that data from 3 external systems and return the best one.
+- Apply SOLID and DDD to refactor the class to make it more readable, testable, configurable and extensible.
+- Fix any bugs or code smells that you see
+- Add tests
+ 
+
+## Notes:
+
+- ExpandoObjects and dynamic were used for class declarations, where implementation details aren’t relevant for this task (requests and responses for external systems).
+- Some code was snipped to keep the task small, instead there’s a comment of what happens there.
+- The solution is open ended, but we expect most people to spend no more than 1-2 hours on it. It doesn’t need to be perfect or complete, just demonstrating the main concepts is enough. We will go through the test during the interview, so you will have a chance to talk through anything else that could be done with more time.
+
+
 # Some notes for the reviewers.
 - Before starting refactoring I have added test to prevent refactoring which changes the system. (BlackBoxTests_To_Verify_The_System_Before_Refactoring.cs)
 - I have used Rules pattern to refactor the code. Every QuotationSystem is a rule which is run by the Price Engine. The Rules are defined and injected in Program.cs - main method. There could be added another level of abstraction if needed, but I thought for the example that is enough.
